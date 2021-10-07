@@ -9,14 +9,17 @@
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
 
-    <script src="https://unpkg.com/vue@next"></script>
+    <!-- <script src="https://unpkg.com/vue@next"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
   </head>
 
   <body>
     <div class="container">
       <div class="card">
-        <p>{{rawHtml}}</p>
-        <p v-html="rawHtml"></p>
+        <div id="app">{{message}}</div>
+        <p v-text="rawHtml">這段會被覆蓋</p>
+        <p v-html="rawHtml">這段會被覆蓋</p>
+        <input v-on:click="remove" type="button" value="Click!" />
       </div>
     </div>
 
