@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
@@ -16,10 +16,31 @@
   <body>
     <div class="container">
       <div class="card">
-        <div id="app">{{message}}</div>
-        <p v-text="rawHtml">這段會被覆蓋</p>
-        <p v-html="rawHtml">這段會被覆蓋</p>
-        <input v-on:click="remove" type="button" value="Click!" />
+        <!-- .lazy -->
+        <!-- 在"change"時更新，而不是在"input"時更新 -->
+        <!-- 可降低更新的次數 -->
+        <input type="text" v-model.lazy.trim="message" placeholder="Input" />
+        <input type="button" v-on:click="click" value="Click" />
+      </div>
+      <div class="card">
+        <select v-model="selected">
+          <option disabled value="">Choose...</option>
+          <option>A</option>
+          <option>B</option>
+          <option value="覆蓋你">C</option>
+          <option>D</option>
+        </select>
+        <div>selected = {{selected}}</div>
+      </div>
+      <div class="card">
+        <!-- .number -->
+        <input type="text" v-model.lazy.number="num" placeholder="0" />
+        <p>{{num}}</p>
+      </div>
+      <div class="card">
+        <!-- .trim -->
+        <input type="text" v-model.lazy.trim="message" placeholder="input" />
+        <p>"{{message}}"</p>
       </div>
     </div>
 

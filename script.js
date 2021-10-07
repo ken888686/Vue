@@ -1,15 +1,20 @@
 const vm = new Vue({
-  el: `.card`,
+  el: `.container`,
   data: {
     // 宣告變數
-    message: `Hello Vue!`,
-    rawHtml: `<p>Raw HTML</p>`,
+    message: ``,
+    selected: ``,
+    num: 0,
   },
   methods: {
     // 宣告事件處理
-    remove: function (e) {
-      this.message = "Removed!";
-      this.rawHtml = `<ol><li>1</li></ol>`;
+    click: function (e) {
+      if (this.message === "") {
+        alert("Please input some text.");
+        return;
+      }
+      console.log(`My Message is "${this.message}"`);
+      this.message = ``;
     },
   },
 });
