@@ -16,48 +16,7 @@
 <body>
   <div class="container">
     <div class="card">
-      <div class="counter">
-        Counter: {{counter}}
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="bind-attribute">
-        <span v-bind:title="message" v-bind:data-test="123">
-          {{hint}}
-        </span>
-        <p>{{description}}</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="event-handling">
-        <p>{{message}}</p>
-        <button v-on:click="reverseMessage">Reverse Message</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="two-way-binding">
-        <p>{{message}}</p>
-        <input v-model="message" placeholder="Nothing">
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="condition-rendering">
-        <span v-if="seen">Check</span>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="list-rendering">
-        <ol>
-          <li v-for="todo in todos">
-            {{todo.text}}
-          </li>
-        </ol>
-      </div>
+      <item></item>
     </div>
   </div>
 
