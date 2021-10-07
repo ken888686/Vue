@@ -1,8 +1,20 @@
-// Create Vue App
-const app = Vue.createApp({});
+const TodoList = {
+  data() {
+    return {
+      myList: [
+        { id: 0, text: "A" },
+        { id: 1, text: "B" },
+        { id: 2, text: "C" },
+      ],
+    };
+  },
+};
 
-app.component("item", {
-  template: `<p>Test</p>`,
+const app = Vue.createApp(TodoList);
+
+app.component("todo-item", {
+  props: ["todo"],
+  template: `<p>{{todo.text}}</p>`,
 });
 
 app.mount(".card");
