@@ -1,20 +1,29 @@
-const vm = new Vue({
-  el: `.container`,
+const app = new Vue({
+  el: ".container",
   data: {
-    // 宣告變數
-    message: ``,
-    selected: ``,
-    num: 0,
+    A: ``,
+    B: ``,
+    C: ``,
+    total: 0,
+    done: false,
+  },
+  computed: {
+    filterNum() {
+      if (this.A >= 100) {
+        this.A = ``;
+        alert(`Please under 100`);
+      }
+    },
   },
   methods: {
-    // 宣告事件處理
-    click: function (e) {
-      if (this.message === "") {
-        alert("Please input some text.");
-        return;
-      }
-      console.log(`My Message is "${this.message}"`);
-      this.message = ``;
+    sum() {
+      this.total = `(A x ${this.A}) + (B x ${this.B}) + (C x ${this.C}) = ${
+        this.A * 50 + this.B * 25 + this.C * 10
+      }`;
+      this.A = ``;
+      this.B = ``;
+      this.C = ``;
+      this.done = true;
     },
   },
 });
