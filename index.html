@@ -15,12 +15,8 @@
   <body>
     <div class="container">
       <div class="card">
-        <todo-item
-          v-for="item in myList"
-          v-bind:todo="item"
-          v-bind:key="item.id"
-        >
-        </todo-item>
+        <p>{{rawHtml}}</p>
+        <p v-html="rawHtml"></p>
       </div>
     </div>
 

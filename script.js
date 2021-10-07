@@ -1,20 +1,9 @@
-const TodoList = {
+const app = Vue.createApp({
   data() {
     return {
-      myList: [
-        { id: 0, text: "A" },
-        { id: 1, text: "B" },
-        { id: 2, text: "C" },
-      ],
+      rawHtml: `<span style="color: red">This should be red.</span>`,
     };
   },
-};
-
-const app = Vue.createApp(TodoList);
-
-app.component("todo-item", {
-  props: ["todo"],
-  template: `<p>{{todo.text}}</p>`,
 });
 
-app.mount(".card");
+const vm = app.mount(".card");
