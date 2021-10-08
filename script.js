@@ -1,12 +1,16 @@
-const app = new Vue({
-  el: ".container",
-  data: {
-    isRed: "red",
-    isHeight: true,
-    objStyle: {
-      color: "#00ffa2",
-      fontSize: "150px",
-      "border-top": "5px solid #00ffa2",
-    },
+Vue.component("counter", {
+  template: `
+    <div>
+      <input type="button" v-on:click="count+=1" value="Save" />
+      {{count}}
+    </div>
+  `,
+  data() {
+    return { count: 0 };
   },
+});
+
+const app = new Vue({
+  el: `.container`,
+  data: {},
 });
