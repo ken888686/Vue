@@ -16,7 +16,8 @@
   <body>
     <div class="container">
       <div class="card">
-        <counter v-bind:message="msg"></counter>
+        <counter v-bind:message="msg" @responsedata="getChildMessage"></counter>
+        {{receive}}
       </div>
     </div>
 
