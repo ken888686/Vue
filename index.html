@@ -16,26 +16,22 @@
   <body>
     <div class="container">
       <div class="card">
-        <!-- 簡單的價目統計 -->
-        <div>
-          <span>A $50:</span>
-          <input type="text" v-model.number.lazy="A" />
-          {{filterNum}}
-        </div>
-        <div>
-          <span>B $25:</span>
-          <input type="text" v-model.number.lazy="B" />
-        </div>
-        <div>
-          <span>C $10:</span>
-          <input type="text" v-model.number.lazy="C" />
-        </div>
+        <!-- v-if/v-else 不會讓程式碼出現 -->
+        <p v-if="proMember">Pro</p>
+        <p v-else>Free</p>
+
+        <!-- v-show 以 display:none; 的方式隱藏程式碼 -->
+        <p v-show="proMember">Pro</p>
+        <p v-show="!proMember">Free</p>
       </div>
       <div class="card">
-        <p>Sum:</p>
-        <p v-if="done">${{total}}</p>
-        <p v-show="done">${{total}}</p>
-        <input type="button" v-on:click="sum" value="Confirm" />
+        <!-- input 加入 key 可將不同的 input 區分開 -->
+        <template v-if="proMember">
+          <input type="text" placeholder="Username" key="Username" />
+        </template>
+        <template v-else>
+          <input type="email" placeholder="Email" key="Email" />
+        </template>
       </div>
     </div>
 
