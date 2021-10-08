@@ -10,37 +10,40 @@
     <link rel="stylesheet" href="style.css" />
 
     <!-- <script src="https://unpkg.com/vue@next"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
 
   <body>
     <div class="container">
       <div class="card">
-        <ul>
-          <li v-for="(item,index) in list1" :key="index">
-            Name: {{item.name}}, Score: {{item.score}}, Result:
-            {{isPassed(item.score)}}
-          </li>
-        </ul>
+        <h1>{{count}}</h1>
+        <input type="button" v-on:click="add" value="Add" />
       </div>
       <div class="card">
-        <ul>
-          <li v-for="(item,index) in list2" :key="index">
-            {{ index }} - {{item.phone}}
-          </li>
-        </ul>
+        <!-- 傳遞原生DOM -->
+        <input type="button" v-on:click="warn('Test.', $event)" value="DOM" />
       </div>
       <div class="card">
-        <ul>
-          <li v-for="(item,index,name) in list2" :key="index">
-            {{index}} - {{name}} - {{item.phone}}
-          </li>
-        </ul>
+        <!-- .stop -->
+        <!-- 停止觸發上層 DOM 元素事件 -->
+        <div v-on:click="dodo">
+          <input type="button" v-on:click.stop="doThis" value="doThis" />
+        </div>
+      </div>
+      <div class="card" v-on:click.capture="doThat">
+        <!-- .capture -->
+        <!-- 不管觸發事件的目標是否是下層 -->
+        <!-- 設定 capture 的事件一定會先觸發 -->
+        <div v-on:click="dodo">
+          <input type="button" v-on:click="doThis" value="doThis" />
+        </div>
       </div>
       <div class="card">
-        <ul>
-          <li v-for="i in 10" :key="i">{{i}}</li>
-        </ul>
+        <!-- .self -->
+        <!-- 只有觸發此 DOM 元素本身才會觸發 self 事件 -->
+        <div v-on:click="doThat">
+          <input type="button" v-on:click.self="doThis" value="doThis" />
+        </div>
       </div>
     </div>
 
