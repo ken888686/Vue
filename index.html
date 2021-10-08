@@ -16,22 +16,31 @@
   <body>
     <div class="container">
       <div class="card">
-        <!-- v-if/v-else 不會讓程式碼出現 -->
-        <p v-if="proMember">Pro</p>
-        <p v-else>Free</p>
-
-        <!-- v-show 以 display:none; 的方式隱藏程式碼 -->
-        <p v-show="proMember">Pro</p>
-        <p v-show="!proMember">Free</p>
+        <ul>
+          <li v-for="(item,index) in list1" :key="index">
+            Name: {{item.name}}, Score: {{item.score}}, Result:
+            {{isPassed(item.score)}}
+          </li>
+        </ul>
       </div>
       <div class="card">
-        <!-- input 加入 key 可將不同的 input 區分開 -->
-        <template v-if="proMember">
-          <input type="text" placeholder="Username" key="Username" />
-        </template>
-        <template v-else>
-          <input type="email" placeholder="Email" key="Email" />
-        </template>
+        <ul>
+          <li v-for="(item,index) in list2" :key="index">
+            {{ index }} - {{item.phone}}
+          </li>
+        </ul>
+      </div>
+      <div class="card">
+        <ul>
+          <li v-for="(item,index,name) in list2" :key="index">
+            {{index}} - {{name}} - {{item.phone}}
+          </li>
+        </ul>
+      </div>
+      <div class="card">
+        <ul>
+          <li v-for="i in 10" :key="i">{{i}}</li>
+        </ul>
       </div>
     </div>
 
