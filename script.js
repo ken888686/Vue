@@ -1,16 +1,15 @@
 Vue.component("counter", {
   template: `
     <div>
-      <input type="button" v-on:click="count+=1" value="Save" />
-      {{count}}
+      Child - {{message}}
     </div>
   `,
-  data() {
-    return { count: 0 };
-  },
+  props: ["message"],
 });
 
 const app = new Vue({
   el: `.container`,
-  data: {},
+  data: {
+    msg: "Parent",
+  },
 });
