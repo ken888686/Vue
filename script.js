@@ -1,27 +1,12 @@
-const passScore = 60;
 const app = new Vue({
   el: ".container",
   data: {
-    count: 1,
-  },
-  methods: {
-    add() {
-      this.count++;
-    },
-    warn(message, event) {
-      if (event) {
-        event.preventDefault();
-      }
-      alert(message);
-    },
-    dodo() {
-      alert(`dodo`);
-    },
-    doThis() {
-      alert(`doThis`);
-    },
-    doThat() {
-      alert(`doThat`);
+    isRed: "red",
+    isHeight: true,
+    objStyle: {
+      color: "#00ffa2",
+      fontSize: "150px",
+      "border-top": "5px solid #00ffa2",
     },
   },
 });

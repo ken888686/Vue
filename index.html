@@ -16,34 +16,10 @@
   <body>
     <div class="container">
       <div class="card">
-        <h1>{{count}}</h1>
-        <input type="button" v-on:click="add" value="Add" />
+        <p v-bind:class="[isRed, isHeight?'height':'']">Red</p>
       </div>
       <div class="card">
-        <!-- 傳遞原生DOM -->
-        <input type="button" v-on:click="warn('Test.', $event)" value="DOM" />
-      </div>
-      <div class="card">
-        <!-- .stop -->
-        <!-- 停止觸發上層 DOM 元素事件 -->
-        <div v-on:click="dodo">
-          <input type="button" v-on:click.stop="doThis" value="doThis" />
-        </div>
-      </div>
-      <div class="card" v-on:click.capture="doThat">
-        <!-- .capture -->
-        <!-- 不管觸發事件的目標是否是下層 -->
-        <!-- 設定 capture 的事件一定會先觸發 -->
-        <div v-on:click="dodo">
-          <input type="button" v-on:click="doThis" value="doThis" />
-        </div>
-      </div>
-      <div class="card">
-        <!-- .self -->
-        <!-- 只有觸發此 DOM 元素本身才會觸發 self 事件 -->
-        <div v-on:click="doThat">
-          <input type="button" v-on:click.self="doThis" value="doThis" />
-        </div>
+        <h1 v-bind:style="objStyle">Title</h1>
       </div>
     </div>
 
