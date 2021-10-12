@@ -9,15 +9,47 @@
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
 
-    <!-- <script src="https://unpkg.com/vue@next"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue@^3"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
   </head>
 
   <body>
     <div class="container">
       <div class="card">
-        <counter v-bind:message="msg" @responsedata="getChildMessage"></counter>
-        {{receive}}
+        <div v-bind:style="style">{{ text }}</div>
+        <div :class="[isPassed ? 'pass' : 'fail']">{{ text }}</div>
+      </div>
+      <div class="card">
+        <input type="checkbox" id="one" value="One" v-model="checked" />
+        <label for="one">One</label>
+        <input type="checkbox" id="two" value="Two" v-model="checked" />
+        <label for="two">Two</label>
+        <input type="checkbox" id="three" value="Three" v-model="checked" />
+        <label for="three">Three</label>
+        <br />
+        <h2>checked data: {{checked}}</h2>
+      </div>
+      <div class="card">
+        <h2 v-if="count>90">A</h2>
+        <h2 v-else-if="count>=60">B</h2>
+        <h2 v-else>C</h2>
+        <p>{{count}}</p>
+        <p>{{result}}</p>
+      </div>
+      <div class="card">
+        <ul>
+          <li v-for="product in products">
+            {{ product.name }} / {{ product.price }}
+            <input type="button" @click="addToCart(product)" value="+" />
+          </li>
+        </ul>
+        <h3>total 的值：{{ total }}</h3>
+        <h3>Computed Getter, Setter</h3>
+        computed sum 的值:
+        <input type="number" v-model.number="num" />
+        <button type="button" @click="total = num">更新</button>
+        total 的值：{{ total }}<br />
+        computed sum 的值:：{{ sum }}
       </div>
     </div>
 

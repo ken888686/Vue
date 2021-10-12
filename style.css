@@ -15,5 +15,13 @@ body {
 .card {
   margin: 10px;
   padding: 10px;
-  background: #004466;
+  background: #0095c0;
+}
+
+.pass {
+  background: #26be19;
+}
+
+.fail {
+  background: #e92f2f;
 }

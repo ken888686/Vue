@@ -1,5 +1,7 @@
-console.log(1 + 2);
-console.log(5 - 7);
-console.log(2 * 2);
-console.log(8 / 4);
-console.log(5 % 2);
+console.log(a);
+b();
+var a = "hello JavaScript!!";
+
+function b() {
+  console.log(x);
+}

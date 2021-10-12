@@ -1,34 +1,60 @@
-Vue.component("counter", {
-  template: `
-    <div>
-      <p>Child - {{message}}</p>
-      <div>
-        <input type="button" v-on:click="returnData" value="Child return">
-      </div>
-    </div>
-  `,
-  props: ["message"],
+const vm = Vue.createApp({
   data() {
     return {
-      text: "Got it!!",
+      count: 100,
+      text: "Hello Vue!!",
+      style: {
+        color: "#000000",
+        backgroundColor: "#00ffa2",
+        padding: "30px",
+        textAlign: "center",
+      },
+      isPassed: false,
+      checked: ["One"],
+      products: [
+        {
+          name: "上衣",
+          price: 300,
+        },
+        {
+          name: "褲子",
+          price: 500,
+        },
+        {
+          name: "鞋子",
+          price: 1500,
+        },
+        {
+          name: "帽子",
+          price: 600,
+        },
+      ],
+      carts: [],
+      sum: 0,
+      num: 20,
     };
   },
-  methods: {
-    returnData() {
-      this.$emit("responsedata", this.text);
+  computed: {
+    result() {
+      return this.count * 10.2;
+    },
+    total: {
+      get() {
+        let total = 0;
+        this.carts.forEach((item) => {
+          total += item.price;
+        });
+        return total;
+      },
+      set(val) {
+        console.log("val");
+        this.sum = val;
+      },
+    },
+    methods: {
+      addToCart(product) {
+        this.carts.push(product);
+      },
     },
   },
-});
-
-const app = new Vue({
-  el: `.container`,
-  data: {
-    msg: "Parent",
-    receive: "Nothing",
-  },
-  methods: {
-    getChildMessage(context) {
-      this.receive = context;
-    },
-  },
-});
+}).mount(".container");
